@@ -35,7 +35,10 @@ it's actually one of the most dangerous.
 Setup
 -----
 
-If you have a bizarre or complicated setup, be sure to look everything
-over before using it. But for anyone with something that resembles
-a standard Nginx installation, this should work without any issues as long as you include in your nginx.conf the `blacklist.conf`.
+Include blacklist.conf on your nginx confg in http block :
+include /etc/nginx/blacklists.conf
 
+In your server block, add : 
+
+if ($bad_bot) { return 403; }
+if ($bad_referer) { return 403; }
